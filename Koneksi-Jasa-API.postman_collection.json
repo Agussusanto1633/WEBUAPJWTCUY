@@ -1,0 +1,176 @@
+{
+  "info": {
+    "name": "Koneksi Jasa API",
+    "description": "API untuk aplikasi Koneksi Jasa - Platform Jasa Cuci Mobil & Service AC",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000/api",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "item": [
+    {
+      "name": "Service Providers",
+      "item": [
+        {
+          "name": "Get All Service Providers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/service-providers?limit=10&page=1&search=&orderBy=id&sortBy=desc&category_id=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-providers"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Jumlah data per halaman (1-100)"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Halaman yang diminta"
+                },
+                {
+                  "key": "search",
+                  "value": "",
+                  "description": "Pencarian berdasarkan nama, deskripsi, atau alamat"
+                },
+                {
+                  "key": "orderBy",
+                  "value": "id",
+                  "description": "Kolom untuk sorting: id, name, rating, created_at, price_range, updated_at"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "desc",
+                  "description": "Arah sorting: asc, desc"
+                },
+                {
+                  "key": "category_id",
+                  "value": "1",
+                  "description": "Filter berdasarkan kategori (1=Cuci Mobil, 2=Service AC)"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Service Provider by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/service-providers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-providers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Service Provider",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"AutoClean Car Wash\",\n  \"category_id\": 1,\n  \"phone\": \"08123456789\",\n  \"email\": \"autoclean@example.com\",\n  \"address\": \"Jl. Sudirman No. 123, Jakarta Selatan\",\n  \"description\": \"Jasa cuci mobil profesional dengan peralatan modern dan hasil terbaik\",\n  \"price_range\": \"Rp 50.000 - 150.000\",\n  \"rating\": 4.5,\n  \"is_available\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/service-providers",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-providers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Service Provider",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"AutoClean Car Wash Updated\",\n  \"phone\": \"081234567890\",\n  \"rating\": 4.7,\n  \"is_available\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/service-providers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-providers", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Service Provider",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/service-providers/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["service-providers", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "API Info",
+      "item": [
+        {
+          "name": "Root Endpoint",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
