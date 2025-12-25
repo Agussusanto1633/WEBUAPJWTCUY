@@ -13,7 +13,7 @@
             @if($provider->photo)
                 <img src="{{ asset('storage/' . $provider->photo) }}" alt="{{ $provider->name }}" class="w-full rounded-lg">
             @else
-                <div class="w-full aspect-square bg-gray-200 rounded-lg flex items-center justify-content text-gray-400 text-6xl">📷</div>
+                <div class="w-full aspect-square bg-gray-200 rounded-lg flex items-center justify-center text-gray-400 text-6xl">📷</div>
             @endif
         </div>
 
