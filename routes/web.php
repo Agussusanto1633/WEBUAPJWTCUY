@@ -24,8 +24,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthWebController::class, 'register']);
 });
 
-// Protected routes (require authentication)
-Route::middleware('auth')->group(function () {
+// Protected routes (require authentication via web session)
+Route::middleware('auth:web')->group(function () {
     // Auth
     Route::post('/logout', [AuthWebController::class, 'logout'])->name('logout');
 

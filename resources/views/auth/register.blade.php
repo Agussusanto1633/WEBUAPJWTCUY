@@ -4,33 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Jasa Cuci Mobil & Motor</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
-        .register-container { background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 2rem; width: 100%; max-width: 400px; }
-        .logo { text-align: center; font-size: 2rem; margin-bottom: 1rem; }
-        .title { text-align: center; color: #1f2937; margin-bottom: 2rem; }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; color: #374151; font-weight: 500; }
-        .form-group input { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px; }
-        .form-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-        .btn { width: 100%; padding: 0.75rem; background: #667eea; color: white; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s; }
-        .btn:hover { background: #5568d3; }
-        .alert { padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
-        .alert-error { background: #fee2e2; color: #991b1b; border: 1px solid #ef4444; }
-        .text-center { text-align: center; }
-        .text-center a { color: #667eea; text-decoration: none; }
-        .text-center a:hover { text-decoration: underline; }
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <div class="register-container">
-        <div class="logo">🚗</div>
-        <h1 class="title">Daftar Akun</h1>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 py-8">
+    <div class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md mx-4">
+        <div class="text-center text-4xl mb-4">🚗</div>
+        <h1 class="text-2xl font-bold text-gray-800 text-center mb-6">Daftar Akun</h1>
 
         @if ($errors->any())
-            <div class="alert alert-error">
-                <ul>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-4">
+                <ul class="list-disc list-inside">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -40,31 +23,31 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <div class="form-group">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus>
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+                <input type="password" id="password" name="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
 
-            <div class="form-group">
-                <label for="password_confirmation">Konfirmasi Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required>
+            <div class="mb-6">
+                <label for="password_confirmation" class="block text-gray-700 font-medium mb-2">Konfirmasi Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
 
-            <button type="submit" class="btn">Daftar</button>
+            <button type="submit" class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">Daftar</button>
         </form>
 
-        <p class="text-center" style="margin-top: 1rem;">
-            Sudah punya akun? <a href="{{ route('login') }}">Login</a>
+        <p class="text-center text-gray-600 mt-4">
+            Sudah punya akun? <a href="{{ route('login') }}" class="text-blue-600 hover:underline">Login</a>
         </p>
     </div>
 </body>
